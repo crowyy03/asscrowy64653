@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "О нас", href: "#about" },
+  { label: "Команда", href: "#team" },
   { label: "Меню", href: "#menu" },
   { label: "Галерея", href: "#gallery" },
   { label: "События", href: "#events" },

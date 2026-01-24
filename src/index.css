@@ -17,68 +17,78 @@
 
 @layer base {
   :root {
-    /* Dark theme by default for atmospheric feel */
-    --background: 222 47% 8%;
-    --foreground: 45 30% 92%;
+    /* Premium palette (from reference):
+       - Alabaster (#EEEADF)
+       - Midnight (#031023)
+       - Raisin (#2C191F)
+       - Copper (accent)
+    */
 
-    --card: 222 47% 11%;
+    --background: 216 84% 7%;
+    --foreground: 44 31% 90%;
+
+    --card: 216 70% 10%;
     --card-foreground: 45 30% 92%;
 
-    --popover: 222 47% 11%;
+    --popover: 216 70% 10%;
     --popover-foreground: 45 30% 92%;
 
-    /* Primary - Deep midnight blue */
-    --primary: 222 47% 15%;
+    /* Primary - Midnight */
+    --primary: 216 84% 12%;
     --primary-foreground: 45 30% 95%;
 
-    /* Secondary - Darker blue */
-    --secondary: 222 40% 12%;
-    --secondary-foreground: 45 30% 90%;
+    /* Secondary - Raisin */
+    --secondary: 341 28% 14%;
+    --secondary-foreground: 44 31% 90%;
 
-    /* Muted - For subtle elements */
-    --muted: 222 30% 18%;
+    /* Muted */
+    --muted: 216 30% 16%;
     --muted-foreground: 220 15% 60%;
 
-    /* Accent - Warm amber/raisin for CTAs and highlights */
-    --accent: 32 80% 50%;
-    --accent-foreground: 222 47% 8%;
+    /* Accent - Copper */
+    --accent: 26 62% 46%;
+    --accent-foreground: 216 84% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 30% 20%;
-    --input: 222 30% 15%;
-    --ring: 32 80% 50%;
+    --border: 216 25% 18%;
+    --input: 216 25% 14%;
+    --ring: 26 62% 46%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gold: 45 90% 55%;
-    --gold-muted: 45 60% 45%;
-    --amber: 32 80% 50%;
-    --cream: 45 30% 92%;
-    --midnight: 222 47% 8%;
-    --midnight-light: 222 47% 15%;
+    --gold: 38 75% 55%;
+    --gold-muted: 38 50% 45%;
+    --amber: 26 62% 46%;
+    --cream: 44 31% 90%;
+    --midnight: 216 84% 7%;
+    --midnight-light: 216 84% 12%;
+    --raisin: 341 28% 14%;
+    --alabaster: 44 31% 90%;
+    --shadow-elevated: 0 30px 80px -40px hsl(var(--accent) / 0.35);
+    --noise-opacity: 0.06;
   }
 
   .dark {
-    --background: 222 47% 8%;
-    --foreground: 45 30% 92%;
-    --card: 222 47% 11%;
-    --card-foreground: 45 30% 92%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 45 30% 92%;
-    --primary: 222 47% 15%;
-    --primary-foreground: 45 30% 95%;
-    --secondary: 222 40% 12%;
-    --secondary-foreground: 45 30% 90%;
-    --muted: 222 30% 18%;
-    --muted-foreground: 220 15% 60%;
-    --accent: 32 80% 50%;
-    --accent-foreground: 222 47% 8%;
-    --border: 222 30% 20%;
-    --input: 222 30% 15%;
-    --ring: 32 80% 50%;
+    --background: 216 84% 7%;
+    --foreground: 44 31% 90%;
+    --card: 216 70% 10%;
+    --card-foreground: 44 31% 90%;
+    --popover: 216 70% 10%;
+    --popover-foreground: 44 31% 90%;
+    --primary: 216 84% 12%;
+    --primary-foreground: 44 31% 90%;
+    --secondary: 341 28% 14%;
+    --secondary-foreground: 44 31% 90%;
+    --muted: 216 30% 16%;
+    --muted-foreground: 44 12% 72%;
+    --accent: 26 62% 46%;
+    --accent-foreground: 216 84% 7%;
+    --border: 216 25% 18%;
+    --input: 216 25% 14%;
+    --ring: 26 62% 46%;
   }
 }
 
@@ -114,6 +124,17 @@
     @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-xl;
   }
 
+  .premium-surface {
+    background: linear-gradient(
+        180deg,
+        hsl(var(--background) / 0.92) 0%,
+        hsl(var(--background) / 0.78) 40%,
+        hsl(var(--secondary) / 0.28) 100%
+      );
+    border: 1px solid hsl(var(--border) / 0.55);
+    box-shadow: var(--shadow-elevated);
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-accent to-[hsl(var(--gold))] bg-clip-text text-transparent;
   }
@@ -128,6 +149,31 @@
 }
 
 @layer utilities {
+  /* Subtle moving gallery marquee */
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  .marquee {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    will-change: transform;
+  }
+
+  .noise-overlay {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: var(--noise-opacity);
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
