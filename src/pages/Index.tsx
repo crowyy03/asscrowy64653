@@ -13,9 +13,12 @@ import Contacts from "@/components/sections/Contacts";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen rich-bg">
+      {/* Noise overlay for entire page */}
+      <div className="fixed inset-0 noise-overlay pointer-events-none z-0" aria-hidden="true" />
+      
       <Header />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Features />
         <About />

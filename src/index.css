@@ -8,87 +8,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System for "В Питере Пить" restobar
-   Color Palette:
-   - Midnight (Primary): Deep navy blue - петербургские ночи
-   - Amber/Raisin (Accent): Warm amber - цвет виски и уюта
-   - Cream (Text): Теплый кремовый для текста
+/* Premium Design System for "В Питере Пить"
+   Palette:
+   - Midnight #031023 (primary bg)
+   - Raisin #2C191F (secondary/cards)
+   - Alabaster #EEEADF (light text)
+   - Copper/Amber (accent — точечно)
 */
 
 @layer base {
   :root {
-    /* Premium palette (from reference):
-       - Alabaster (#EEEADF)
-       - Midnight (#031023)
-       - Raisin (#2C191F)
-       - Copper (accent)
-    */
+    /* Midnight #031023 → hsl(213 82% 7%) */
+    --background: 213 82% 7%;
+    /* Alabaster #EEEADF → hsl(38 33% 91%) */
+    --foreground: 38 33% 91%;
 
-    --background: 216 84% 7%;
-    --foreground: 44 31% 90%;
+    /* Raisin #2C191F → hsl(347 28% 13%) */
+    --card: 347 28% 13%;
+    --card-foreground: 38 33% 91%;
 
-    --card: 216 70% 10%;
-    --card-foreground: 45 30% 92%;
+    --popover: 347 28% 13%;
+    --popover-foreground: 38 33% 91%;
 
-    --popover: 216 70% 10%;
-    --popover-foreground: 45 30% 92%;
+    /* Primary — Midnight deeper */
+    --primary: 213 82% 10%;
+    --primary-foreground: 38 33% 95%;
 
-    /* Primary - Midnight */
-    --primary: 216 84% 12%;
-    --primary-foreground: 45 30% 95%;
-
-    /* Secondary - Raisin */
-    --secondary: 341 28% 14%;
-    --secondary-foreground: 44 31% 90%;
+    /* Secondary — Raisin */
+    --secondary: 347 28% 13%;
+    --secondary-foreground: 38 33% 91%;
 
     /* Muted */
-    --muted: 216 30% 16%;
-    --muted-foreground: 220 15% 60%;
+    --muted: 213 30% 14%;
+    --muted-foreground: 38 15% 60%;
 
-    /* Accent - Copper */
-    --accent: 26 62% 46%;
-    --accent-foreground: 216 84% 7%;
+    /* Accent — Copper #B05C3B → hsl(16 51% 46%) */
+    --accent: 16 51% 46%;
+    --accent-foreground: 38 33% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 38 33% 95%;
 
-    --border: 216 25% 18%;
-    --input: 216 25% 14%;
-    --ring: 26 62% 46%;
+    --border: 213 25% 16%;
+    --input: 213 25% 12%;
+    --ring: 16 51% 46%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gold: 38 75% 55%;
-    --gold-muted: 38 50% 45%;
-    --amber: 26 62% 46%;
-    --cream: 44 31% 90%;
-    --midnight: 216 84% 7%;
-    --midnight-light: 216 84% 12%;
-    --raisin: 341 28% 14%;
-    --alabaster: 44 31% 90%;
-    --shadow-elevated: 0 30px 80px -40px hsl(var(--accent) / 0.35);
-    --noise-opacity: 0.06;
+    --midnight: 213 82% 7%;
+    --midnight-light: 213 70% 12%;
+    --raisin: 347 28% 13%;
+    --alabaster: 38 33% 91%;
+    --copper: 16 51% 46%;
+    --amber: 26 62% 48%;
+    --gold: 38 70% 55%;
+    --noise-opacity: 0.04;
   }
 
   .dark {
-    --background: 216 84% 7%;
-    --foreground: 44 31% 90%;
-    --card: 216 70% 10%;
-    --card-foreground: 44 31% 90%;
-    --popover: 216 70% 10%;
-    --popover-foreground: 44 31% 90%;
-    --primary: 216 84% 12%;
-    --primary-foreground: 44 31% 90%;
-    --secondary: 341 28% 14%;
-    --secondary-foreground: 44 31% 90%;
-    --muted: 216 30% 16%;
-    --muted-foreground: 44 12% 72%;
-    --accent: 26 62% 46%;
-    --accent-foreground: 216 84% 7%;
-    --border: 216 25% 18%;
-    --input: 216 25% 14%;
-    --ring: 26 62% 46%;
+    --background: 213 82% 7%;
+    --foreground: 38 33% 91%;
+    --card: 347 28% 13%;
+    --card-foreground: 38 33% 91%;
+    --popover: 347 28% 13%;
+    --popover-foreground: 38 33% 91%;
+    --primary: 213 82% 10%;
+    --primary-foreground: 38 33% 95%;
+    --secondary: 347 28% 13%;
+    --secondary-foreground: 38 33% 91%;
+    --muted: 213 30% 14%;
+    --muted-foreground: 38 15% 60%;
+    --accent: 16 51% 46%;
+    --accent-foreground: 38 33% 95%;
+    --border: 213 25% 16%;
+    --input: 213 25% 12%;
+    --ring: 16 51% 46%;
   }
 }
 
@@ -108,48 +103,76 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Unbounded', sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-8;
+    @apply py-20 md:py-28 px-4 md:px-8;
   }
 
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
 
+  /* Premium glass card — тонкая, воздушная */
   .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-xl;
+    @apply bg-card/60 backdrop-blur-lg border border-border/30 rounded-2xl;
   }
 
+  /* Rich background with gradient + glow spots */
+  .rich-bg {
+    background: 
+      radial-gradient(ellipse 60% 40% at 20% 10%, hsl(var(--copper) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 80% 80%, hsl(var(--raisin) / 0.5) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--midnight)) 0%, hsl(var(--midnight-light)) 50%, hsl(var(--raisin) / 0.3) 100%);
+  }
+
+  /* Premium surface with subtle glow */
   .premium-surface {
     background: linear-gradient(
-        180deg,
-        hsl(var(--background) / 0.92) 0%,
-        hsl(var(--background) / 0.78) 40%,
-        hsl(var(--secondary) / 0.28) 100%
-      );
-    border: 1px solid hsl(var(--border) / 0.55);
-    box-shadow: var(--shadow-elevated);
+      135deg,
+      hsl(var(--card) / 0.85) 0%,
+      hsl(var(--card) / 0.6) 100%
+    );
+    border: 1px solid hsl(var(--border) / 0.4);
+    box-shadow: 
+      0 4px 20px -4px hsl(var(--accent) / 0.08),
+      inset 0 1px 0 hsl(var(--foreground) / 0.03);
   }
 
+  /* Text gradient — copper to gold */
   .text-gradient {
-    @apply bg-gradient-to-r from-accent to-[hsl(var(--gold))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent via-amber to-gold bg-clip-text text-transparent;
   }
 
+  /* Subtle lift on hover */
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+    @apply transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg;
   }
 
+  /* Accent glow for buttons */
   .accent-glow {
-    box-shadow: 0 0 40px hsl(var(--accent) / 0.15);
+    box-shadow: 0 0 30px -5px hsl(var(--accent) / 0.25);
+  }
+
+  /* Amber border accent */
+  .amber-border {
+    border: 1px solid hsl(var(--accent) / 0.3);
+  }
+
+  /* Section label badge */
+  .section-label {
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide uppercase;
+    background: hsl(var(--accent) / 0.08);
+    border: 1px solid hsl(var(--accent) / 0.15);
+    color: hsl(var(--accent));
   }
 }
 
 @layer utilities {
-  /* Subtle moving gallery marquee */
+  /* Marquee animations */
   @keyframes marquee-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -161,33 +184,35 @@
   }
 
   .marquee {
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 
   .marquee-track {
     will-change: transform;
   }
 
+  /* Noise overlay — very subtle */
   .noise-overlay {
-    background-image: radial-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px);
-    background-size: 3px 3px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     opacity: var(--noise-opacity);
+    mix-blend-mode: overlay;
   }
 
+  /* Fade animations — subtle 10-15px movement */
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.5s ease-out forwards;
   }
 
   .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.5s ease-out forwards;
   }
 
-  .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out forwards;
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.5s ease-out forwards;
   }
 
-  .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
+  .animate-fade-in-right {
+    animation: fadeInRight 0.5s ease-out forwards;
   }
 
   @keyframes fadeIn {
@@ -198,7 +223,7 @@
   @keyframes fadeInUp {
     from { 
       opacity: 0; 
-      transform: translateY(30px);
+      transform: translateY(12px);
     }
     to { 
       opacity: 1; 
@@ -206,10 +231,10 @@
     }
   }
 
-  @keyframes slideInLeft {
+  @keyframes fadeInLeft {
     from { 
       opacity: 0; 
-      transform: translateX(-50px);
+      transform: translateX(-12px);
     }
     to { 
       opacity: 1; 
@@ -217,14 +242,35 @@
     }
   }
 
-  @keyframes slideInRight {
+  @keyframes fadeInRight {
     from { 
       opacity: 0; 
-      transform: translateX(50px);
+      transform: translateX(12px);
     }
     to { 
       opacity: 1; 
       transform: translateX(0);
     }
+  }
+
+  /* Video overlay gradient */
+  .video-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--midnight) / 0.6) 0%,
+      hsl(var(--midnight) / 0.75) 40%,
+      hsl(var(--midnight) / 0.9) 80%,
+      hsl(var(--midnight)) 100%
+    );
+  }
+
+  /* Scroll indicator pulse */
+  @keyframes subtle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  .animate-subtle-bounce {
+    animation: subtle-bounce 2s ease-in-out infinite;
   }
 }

@@ -53,11 +53,12 @@ export default {
         },
         // Custom brand colors
         gold: "hsl(var(--gold))",
-        "gold-muted": "hsl(var(--gold-muted))",
         amber: "hsl(var(--amber))",
-        cream: "hsl(var(--cream))",
+        copper: "hsl(var(--copper))",
         midnight: "hsl(var(--midnight))",
         "midnight-light": "hsl(var(--midnight-light))",
+        raisin: "hsl(var(--raisin))",
+        alabaster: "hsl(var(--alabaster))",
       },
       borderRadius: {
         lg: "var(--radius)",
